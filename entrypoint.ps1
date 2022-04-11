@@ -40,7 +40,7 @@ if ($version.FullVersion -ne "0.1.0")
 Write-Information "Docker Tags:"
 $dockerTags | ConvertTo-Json
 
-$dockerImageName = "jreichman/buildenv"
+$dockerImageName = "archmachina/devenv"
 
 ########
 # Build stage
@@ -79,8 +79,8 @@ Invoke-CIProfile -Name $Profile -Steps @{
     release = @{
         Dependencies = $("build")
         Script = {
-            $owner = "jreichman"
-            $repo = "buildenv"
+            $owner = "archmachina"
+            $repo = "devenv"
 
             $releaseParams = @{
                 Owner = $owner
