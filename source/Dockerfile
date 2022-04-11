@@ -24,7 +24,7 @@ RUN apt-add-repository "deb [arch=amd64] https://packages.microsoft.com/repos/az
 
 RUN apt update && apt install -y vim ansible git nmap dotnet-sdk-5.0 azure-functions-core-tools-3 npm \
   jq dotnet-sdk-3.1 aspnetcore-runtime-5.0 docker-ce docker-ce-cli containerd.io powershell \
-  screen net-tools sshpass wireshark easy-rsa whois traceroute nuget tmux gh terraform azure-cli \
+  screen net-tools sshpass wireshark whois traceroute nuget tmux gh terraform azure-cli \
   kubectl=1.21.\* kubeadm=1.21.\* helm
 
 ENTRYPOINT [ "/bin/bash" ]
