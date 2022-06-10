@@ -47,7 +47,7 @@ $dockerImageName = "archmachina/devenv"
 Invoke-CIProfile -Name $Profile -Steps @{
 
     lint = @{
-        Script = {
+        Steps = {
             Use-PowershellGallery
             Install-Module PSScriptAnalyzer -Scope CurrentUser
             Import-Module PSScriptAnalyzer
@@ -61,7 +61,7 @@ Invoke-CIProfile -Name $Profile -Steps @{
     }
 
     build = @{
-        Script = {
+        Steps = {
             # Docker build
             Write-Information ("Building for {0}" -f $dockerImageName)
             Invoke-Native "docker" "build", "-f", "./source/Dockerfile", "-q", "-t", $dockerImageName, "./source"
@@ -69,16 +69,15 @@ Invoke-CIProfile -Name $Profile -Steps @{
     }
 
     pr = @{
-        Dependencies = $("lint", "build")
+        Steps = "lint", "build"
     }
 
     latest = @{
-        Dependencies = $("lint", "build")
+        Steps = "lint", "build"
     }
 
     release = @{
-        Dependencies = $("build")
-        Script = {
+        Steps = "build", {
             $owner = "archmachina"
             $repo = "devenv"
 
