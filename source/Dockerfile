@@ -1,4 +1,4 @@
-FROM ubuntu:focal-20220404
+FROM ubuntu:22.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 
